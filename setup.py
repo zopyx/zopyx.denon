@@ -29,5 +29,7 @@ setup(name='zopyx.denon',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [console_scripts]
+      denon-srv = zopyx.denon.denon:main
       """,
       )

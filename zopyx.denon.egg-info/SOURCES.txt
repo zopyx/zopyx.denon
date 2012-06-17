@@ -11,3 +11,6 @@ zopyx.denon.egg-info/not-zip-safe
 zopyx.denon.egg-info/requires.txt
 zopyx.denon.egg-info/top_level.txt
 zopyx/denon/__init__.py
+zopyx/denon/denon.pt
+zopyx/denon/denon.py
+zopyx/denon/styles.css
