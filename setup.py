@@ -24,6 +24,7 @@ setup(name='zopyx.denon',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'bottle',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

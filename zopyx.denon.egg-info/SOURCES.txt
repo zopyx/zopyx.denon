@@ -1,5 +1,6 @@
 README.txt
 setup.py
+docs/HISTORY.txt
 zopyx/__init__.py
 zopyx.denon.egg-info/PKG-INFO
 zopyx.denon.egg-info/SOURCES.txt

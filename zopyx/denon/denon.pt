@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" media="screen" href="/static/styles.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript">
+            function _send(cmd0, cmd1) {
+                var url = 'http://192.168.0.128/MainZone/index.put.asp?cmd0=' + cmd0 + '&cmd1=' + cmd1;
+                $.getJSON(url, { format: 'json' });
+            }
+
+            $(document).ready(function() {
+                $('#volume').bind('change', function() {
+                    var v = $('#volume').val();
+                    $('#volume-value').html(v + ' db');
+                    _send('PutMasterVolumeSet/' + v, 'aspMainZone_WebUpdateStatus')
+                });
+
+                $('.command-button').bind('click', function() {
+                    var cmd0 = $(this).attr('cmd0');
+                    _send(cmd0, 'aspMainZone_WebUpdateStatus');  
+                });
+
+                $('#volume-down').bind('click', function() {
+                    _send('PutMasterVolumeBtn/<', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/<', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/<', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/<', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/<', 'aspMainZone_WebUpdateStatus')
+                });
+                $('#volume-up').bind('click', function() {
+                    _send('PutMasterVolumeBtn/>', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/>', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/>', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/>', 'aspMainZone_WebUpdateStatus')
+                    _send('PutMasterVolumeBtn/>', 'aspMainZone_WebUpdateStatus')
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Denon AVR 2113</h1>
+        <div class="line">
+            <input class="command-button" cmd0="PutZone_InputFunction/SAT/CBL" type="button" value="Squeezebox"  />
+        </div>
+        <div class="line">
+            <input class="command-button" cmd0="'PutZone_InputFunction/FAVORITE1" type="button" value="SR2" id="favorite-1" />
+            <input class="command-button" cmd0="'PutZone_InputFunction/FAVORITE2" type="button" value="SWR2" id="favorite-2" />
+            <input class="command-button" cmd0="'PutZone_InputFunction/FAVORITE3" type="button" value="SWR3" id="favorite-3" />
+        </div>
+        <div class="line">
+            <input class="command-button" cmd0="PutVolumeMute/on" type="button" value="Mute on" id="mute-on" />
+            <input class="command-button" cmd0="PutMasterVolumeBtn/>" type="button" value="Mute off" id="mute-off" />
+        </div>
+        <div class="line">
+            <input class="command-button" type="button" value="Volume down" id="volume-down" />
+            <input class="command-button" type="button" value="Volume up" id="volume-up" />
+        </div>
+        <div class="line">
+            <label>Volume</label> <input id="volume" type="range"  min="-50" max="10" value="-10" />
+            <span id="volume-value">0 db</span>
+        </div>
+    </body>
+</html>
