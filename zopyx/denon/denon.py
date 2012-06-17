@@ -10,4 +10,8 @@ def server_static(filename):
 def denon():
     return template('denon.pt')
 
-run(host='0.0.0.0', port=10000)
+def main():
+    run(host='0.0.0.0', port=10000)
+
+if __name__ == '__main__':
+    main()
